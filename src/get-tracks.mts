@@ -1,9 +1,28 @@
 import 'dotenv/config';
 import pc from 'picocolors';
+import { Command } from 'commander';
 
 // Get Spotify API credentials from environment variables
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+
+if (!clientId || !clientSecret) {
+  console.error(
+    pc.red(
+      'Spotify API credentials not found. Set SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET environment variables.'
+    )
+  );
+  process.exit(1);
+}
+
+const program = new Command();
+program
+  .requiredOption('--artist <artist>', 'Artist name')
+  .requiredOption('--album <album>', 'Album name')
+  .option('--num-tracks <numTracks>', 'Number of top tracks to display', '5')
+  .parse(process.argv);
+
+const options = program.opts();
 
 // Function to get an access token (Client Credentials Flow)
 async function getAccessToken(): Promise<string> {
@@ -80,6 +99,12 @@ async function getAlbumsByArtist(
 // Function to find a specific album (case-insensitive and fuzzy matching)
 function findAlbum(albums: any[], albumName: string): string | null {
   console.log(pc.gray(`Trying to match album '${albumName}'...`));
+  console.log(
+    'ALL ALBUMS',
+    albums.map((album) => {
+      return { name: album.name, id: album.id };
+    })
+  );
   let albumId: string | null = null;
   for (const album of albums) {
     if (album.name.toLowerCase() === albumName.toLowerCase()) {
@@ -221,13 +246,17 @@ async function getTopTracksFromAlbum(
 // const albumName = '#RICHAXXHAITIAN';
 // const artistName = 'Mannequin Pussy';
 // const albumName = 'I Got Heaven';
-const artistName = 'Wishy';
-const albumName = 'Triple Seven';
+// const artistName = 'Wishy';
+// const albumName = 'Triple Seven';
+const artistName = options.artist;
+const albumName = options.album;
+const numTracks = parseInt(options.numTracks);
 
 console.log(
   pc.white(`Getting top tracks for album '${albumName}' by '${artistName}'...`)
 );
-getTopTracksFromAlbum(artistName, albumName).then((topTracks) => {
+
+getTopTracksFromAlbum(artistName, albumName, numTracks).then((topTracks) => {
   if (topTracks) {
     console.log(pc.white(`Top tracks on '${albumName}' by '${artistName}':`));
     topTracks.forEach((track, index) => {
