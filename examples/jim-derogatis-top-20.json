@@ -1,0 +1,29 @@
+{
+  "title": "Jim DeRogatis Top 20 Albums Of 2024",
+  "source": "https://soundopinions.org/show/993",
+  "albums": [
+    { "artist": "Mary Timony", "album": "Untame the Tiger" },
+    { "artist": "Sprints", "album": "Letter to Self" },
+    {
+      "artist": "Hurray for the Riff Raff",
+      "album": "The Past is Still Alive"
+    },
+    { "artist": "Amyl and the Sniffers", "album": "Cartoon Darkness" },
+    { "artist": "Redd Kross", "album": "Redd Kross" },
+    { "artist": "Finom", "album": "Not God" },
+    { "artist": "Idles", "album": "Tangk" },
+    { "artist": "English Teacher", "album": "This Could Be Texas" },
+    { "artist": "Shellac", "album": "To All Trains" },
+    { "artist": "Tyler the Creator", "album": "Chromakopia" },
+    { "artist": "Beyonce", "album": "Cowboy Carter" },
+    { "artist": "Mdou Moctar", "album": "Funeral for Justice" },
+    { "artist": "Pillow Queens", "album": "Suffer" },
+    { "artist": "Grandaddy", "album": "Blu Wav" },
+    { "artist": "The Anti-Queens", "album": "Doomed Again" },
+    { "artist": "Jack White", "album": "No Name" },
+    { "artist": "Goat Girl", "album": "Below the Waste" },
+    { "artist": "Waxahatchee", "album": "Tigers Blood" },
+    { "artist": "X", "album": "Smoke & Fiction" },
+    { "artist": "Peter Gabriel", "album": "I/O" }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Greg Kot Top 20 Albums Of 2024",
+  "source": "https://soundopinions.org/show/993",
+  "albums": [
+    { "artist": "Sprints", "album": "Letter to Self" },
+    { "artist": "Mary Timony", "album": "Untame the Tiger" },
+    { "artist": "Redd Kross", "album": "Redd Kross" },
+    { "artist": "Elucid", "album": "Revelator" },
+    { "artist": "Finom", "album": "Not God" },
+    { "artist": "Shirlette Ammons", "album": "Spectacles" },
+    { "artist": "Mdou Moctar", "album": "Funeral for Justice" },
+    { "artist": "Tyler the Creator", "album": "Chromakopia" },
+    { "artist": "Wussy", "album": "Cincinnati Ohio" },
+    { "artist": "Dehd", "album": "Poetry" },
+    { "artist": "Ibibio Sound Machine", "album": "Pull the Rope" },
+    { "artist": "Michael Kiwanuka", "album": "Small Changes" },
+    { "artist": "The Jesus Lizard", "album": "Rack" },
+    { "artist": "Waxahatchee", "album": "Tigers Blood" },
+    { "artist": "English Teacher", "album": "This Could be Texas" },
+    {
+      "artist": "Hurray for the Riff Raff",
+      "album": "The Past is Still Alive"
+    },
+    { "artist": "The Cure", "album": "Songs of a Lost World" },
+    { "artist": "Brittany Howard", "album": "Prove it to You" },
+    { "artist": "Angelica Garcia", "album": "Color de Dolor" },
+    { "artist": "Shellac", "album": "To All Trains" }
+  ]
+}
