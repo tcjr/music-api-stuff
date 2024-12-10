@@ -256,13 +256,13 @@ console.log(
   pc.white(`Getting top tracks for album '${albumName}' by '${artistName}'...`)
 );
 
-getTopTracksFromAlbum(artistName, albumName, numTracks).then((topTracks) => {
-  if (topTracks) {
-    console.log(pc.white(`Top tracks on '${albumName}' by '${artistName}':`));
-    topTracks.forEach((track, index) => {
-      console.log(pc.white(`${index + 1}. ${track}`));
-    });
-  } else {
-    console.log(pc.red('Could not retrieve top tracks.'));
-  }
-});
+const topTracks = await getTopTracksFromAlbum(artistName, albumName, numTracks);
+
+if (topTracks) {
+  console.log(pc.white(`Top tracks on '${albumName}' by '${artistName}':`));
+  topTracks.forEach((track, index) => {
+    console.log(pc.white(`${index + 1}. ${track}`));
+  });
+} else {
+  console.log(pc.red('Could not retrieve top tracks.'));
+}
