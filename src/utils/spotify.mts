@@ -92,6 +92,11 @@ export async function getAlbumsByArtist(artistId: string): Promise<any[]> {
     const data = await response.json();
     albums = albums.concat(data.items);
     url = data.next;
+    if (batch >= 3) {
+      console.log(pc.yellow('Reached maximum number of album batches.'));
+      url = '';
+      break;
+    }
   }
   console.log(pc.gray(`Found ${albums.length} albums for artist ${artistId}.`));
   return albums;
@@ -116,6 +121,11 @@ export async function getAlbumTracks(albumId: string): Promise<any[]> {
     const data = await response.json();
     tracks = tracks.concat(data.items);
     url = data.next;
+    if (batch >= 2) {
+      console.log(pc.yellow('Reached maximum number of tracks batches.'));
+      url = '';
+      break;
+    }
   }
 
   console.log(pc.gray(`Found ${tracks.length} tracks for album ${albumId}.`));
@@ -145,14 +155,10 @@ export async function getTrackDetails(trackIds: string[]): Promise<any[]> {
 }
 
 // Function to find a specific album (case-insensitive and fuzzy matching)
+// LOL at "fuzzy matching" added by the chatbot. It's pretty lame matching.
+// We could use a search library like Fuse.js for better fuzzy matching.
 function findAlbum(albums: any[], albumName: string): string | null {
   console.log(pc.gray(`Trying to match album '${albumName}'...`));
-  console.log(
-    'ALL ALBUMS',
-    albums.map((album) => {
-      return { name: album.name, id: album.id };
-    })
-  );
   let albumId: string | null = null;
   for (const album of albums) {
     if (album.name.toLowerCase() === albumName.toLowerCase()) {
@@ -175,7 +181,17 @@ function findAlbum(albums: any[], albumName: string): string | null {
       }
     }
   }
-  console.log(pc.gray(`Matched album ID: ${albumId}`));
+  if (!albumId) {
+    console.log(pc.red(`Album '${albumName}' not found.`));
+    // Dump all albums for debugging
+    console.table(
+      albums.map((album) => {
+        return { name: album.name, id: album.id };
+      })
+    );
+  } else {
+    console.log(pc.gray(`Matched album ID: ${albumId}`));
+  }
   return albumId;
 }
 
